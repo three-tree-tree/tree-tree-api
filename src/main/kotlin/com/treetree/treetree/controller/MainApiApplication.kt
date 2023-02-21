@@ -1,4 +1,4 @@
-package com.treetree.treetree
+package com.treetree.treetree.controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -9,7 +9,7 @@ class MainApiApplication {
 
     @GetMapping("/test")
     fun readTodo(): String {
-        return "Hello Todo3"
+        return "Hello Todo4"
     }
 
 
