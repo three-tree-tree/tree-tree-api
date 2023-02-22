@@ -3,17 +3,21 @@ services:
   mysqldb:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: test
-      MYSQL_ROOT_PASSWORD: 0000
+      MYSQL_DATABASE: treetree
+      MYSQL_USER: tree
+      MYSQL_PASSWORD: tree0226
+      MYSQL_ROOT_PASSWORD: "tree0226"
     ports:
       - 3306:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
 
   backend:
     build: .
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/test
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 0000
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/treetree
+      SPRING_DATASOURCE_USERNAME: tree
+      SPRING_DATASOURCE_PASSWORD: tree0226
     ports:
       - 8080:8080
     depends_on:
