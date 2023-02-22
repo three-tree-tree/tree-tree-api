@@ -2,7 +2,7 @@
 FROM amazoncorretto:11
 
 #내 로컬 jar 파일 경로
-ARG JAR_FILE=build/libs/api-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=build/libs/*.jar
 
 #내 로컬 컴퓨터의 jar을 컨테이너로 copy
 COPY ${JAR_FILE} app.jar
