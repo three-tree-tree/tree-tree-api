@@ -11,7 +11,4 @@ class MainApiApplication {
     fun readTodo(): String {
         return "Hello Todo4"
     }
-
-
-
 }
