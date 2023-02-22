@@ -1,18 +1,20 @@
 version: '3.8'
 services:
   mysqldb:
-    image: mysql
+    image: mysql:8.0
+    restart: always
     environment:
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: tree
       MYSQL_ROOT_PASSWORD: 0000
     ports:
       - 3306:3306
 
   backend:
     build: .
+    restart: always
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/test
-      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/treetree
+      SPRING_DATASOURCE_USERNAME: tree
       SPRING_DATASOURCE_PASSWORD: 0000
     ports:
       - 8080:8080
