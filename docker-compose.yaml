@@ -1,34 +1,20 @@
-spring:
-  devtools:
-    # Auto Restart
-    restart:
-      enabled: true
-      additional-exclude: static/**,public/**
-    # Live Reload
-      livereload:
-        enabled: true
+version: '3.8'
 services:
-  treetree:
-    build:
-      context: .
-    ports:
-      - "8080:8080"
-    expose:
-      - 8080
-    volumes:
-      - ".:/app"
-    environment:
-      - CATALINA_OPTS=
-  db:
+  mysqldb:
     image: mysql:8.0
-    container_name: treetree
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: 0000
     ports:
       - 3306:3306
+
+  backend:
+    build: .
     environment:
-      MYSQL_ROOT_PASSWORD: "tree0226"
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-    #컨테이너 디렉토리와 로컬 디렉토리가 싱크됨 컨테이너에 뭔가 동작하면 로컬에도 동작 컨테이너가 내려가도 데이터는 유지됨
-    volumes:
-      - ./mysql:/var/lib/mysql
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/test
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 0000
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
