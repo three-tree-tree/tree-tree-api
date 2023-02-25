@@ -20,5 +20,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: tree0226
     ports:
       - 8080:8080
+#      - 443:8080 # prod 에서는 80
     depends_on:
       - mysqldb
+#    volumes: # ssl 인증서를 위해서 prod에서 volume 필요
+#      - ./docker:/home

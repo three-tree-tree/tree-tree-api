@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class TreetreeApplication
 
 fun main(args: Array<String>) {
-	runApplication<TreetreeApplication>(*args)
+    runApplication<TreetreeApplication>(*args)
 }

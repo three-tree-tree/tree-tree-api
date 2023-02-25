@@ -14,3 +14,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+server:
+  ssl:
+    enabled: true
+    key-store: /home/letsencrypt.jks
+    key-store-password: yummy2021
+    key-password: yummy2021
